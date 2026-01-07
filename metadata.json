@@ -1,0 +1,7 @@
+{
+  "name": "Tapeçaria Paulista",
+  "description": "Site profissional para tapeçaria especializada em reformas de sofás, bancos automotivos, poltronas e confecção de puffs e almofadas sob medida.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
