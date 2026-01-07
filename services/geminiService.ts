@@ -2,11 +2,12 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { QuoteRequest, AIResponse } from "../types";
 
-// Always use const ai = new GoogleGenAI({apiKey: process.env.API_KEY});
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY;
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export const getSmartQuoteAdvice = async (quote: QuoteRequest): Promise<AIResponse> => {
   try {
+    if (!ai) throw new Error("AI not initialized");
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: `Um cliente chamado ${quote.name} está pedindo um orçamento para ${quote.serviceType}. 
