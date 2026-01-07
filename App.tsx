@@ -75,7 +75,6 @@ const App: React.FC = () => {
     setTimeout(() => setShowSuccess(false), 10000);
   };
 
-  const logoUrl = "images/LogoTapecaria.png";
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -86,23 +85,10 @@ const App: React.FC = () => {
             onClick={() => scrollToSection('inicio')}
             className="flex items-center group transition-all"
           >
-            <div className="relative h-16 flex items-center" style={{ minWidth: '180px' }}>
-              <img
-                src={logoUrl}
-                alt="Logo Tapeçaria Paulista"
-                className="h-full w-auto object-contain block"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  target.style.display = 'none';
-                  const parent = target.parentElement;
-                  if (parent && !parent.querySelector('.logo-text-fallback')) {
-                    const span = document.createElement('span');
-                    span.className = 'logo-text-fallback text-2xl font-bold text-primary font-serif';
-                    span.innerText = 'Tapeçaria Paulista';
-                    parent.appendChild(span);
-                  }
-                }}
-              />
+            <div className="relative h-16 flex items-center">
+              <span className="text-2xl font-bold font-serif" style={{ color: '#3d7761' }}>
+                Tapeçaria Paulista
+              </span>
             </div>
           </button>
 
@@ -502,22 +488,9 @@ const App: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div className="flex flex-col items-center md:items-start">
               <div className="relative h-14 flex items-center mb-6">
-                <img
-                  src={logoUrl}
-                  alt="Logo Tapeçaria Paulista"
-                  className="h-full w-auto object-contain block"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    target.style.display = 'none';
-                    const parent = target.parentElement;
-                    if (parent && !parent.querySelector('.logo-text-footer')) {
-                      const span = document.createElement('span');
-                      span.className = 'logo-text-footer text-xl font-bold text-white font-serif';
-                      span.innerText = 'Tapeçaria Paulista';
-                      parent.appendChild(span);
-                    }
-                  }}
-                />
+                <span className="text-xl font-bold font-serif" style={{ color: '#3d7761' }}>
+                  Tapeçaria Paulista
+                </span>
               </div>
               <p className="text-gray-400 text-sm">
                 Sua tapeçaria de confiança em Campo Grande. Especialistas em conforto e elegância desde 1995.
