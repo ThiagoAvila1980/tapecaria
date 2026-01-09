@@ -2,7 +2,19 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { QuoteRequest, AIResponse } from "../types";
 
-const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY;
+// Safe access to environment variables in Vite
+const getApiKey = () => {
+  try {
+    return import.meta.env.VITE_GEMINI_API_KEY ||
+      (typeof process !== 'undefined' ? process.env.GEMINI_API_KEY : null) ||
+      (typeof process !== 'undefined' ? process.env.API_KEY : null) ||
+      "";
+  } catch (e) {
+    return "";
+  }
+};
+
+const apiKey = getApiKey();
 const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export const getSmartQuoteAdvice = async (quote: QuoteRequest): Promise<AIResponse> => {
